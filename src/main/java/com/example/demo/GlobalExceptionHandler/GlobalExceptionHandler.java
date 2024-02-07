@@ -13,12 +13,12 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<Object> handleNotFoundException(NotFoundException ex, WebRequest request) {
         ErrorResponse errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND, ex.getMessage());
-        return new ResponseEntity<>(errorResponse, new HttpHeaders(), errorResponse.getStatus());
+        return new ResponseEntity<>(errorResponse, new HttpHeaders(), errorResponse.getStatusCode());
     }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request) {
         ErrorResponse errorResponse = new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage());
-        return new ResponseEntity<>(errorResponse, new HttpHeaders(), errorResponse.getStatus());
+        return new ResponseEntity<>(errorResponse, new HttpHeaders(), errorResponse.getStatusCode());
     }
 }
